@@ -1,0 +1,30 @@
+services:
+  ide:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pixelwood-ide-test
+    restart: unless-stopped
+
+    # Test access only. We can put this behind HTTPS later.
+    ports:
+      - "127.0.0.1:8088:8080"
+
+    environment:
+      PASSWORD: "${IDE_PASSWORD}"
+
+    volumes:
+      - ./workspace:/workspace
+      - ./config:/home/coder/.local/share/code-server/User
+
+    working_dir: /workspace
+
+    mem_limit: 768m
+    cpus: 1.0
+    pids_limit: 256
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL

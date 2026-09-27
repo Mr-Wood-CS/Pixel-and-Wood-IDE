@@ -8,6 +8,8 @@ It creates ONE test coding environment containing:
 
 - code-server (VS Code in a browser)
 - Python 3
+- pip for installing approved Python packages
+- the pupil-friendly Pixel & Wood Python Editor
 - SQLite
 - automatic file saving
 - a persistent workspace
@@ -35,6 +37,7 @@ That means this first version is NOT deliberately exposed directly to the public
 - `docker-compose.yml` — starts the test IDE.
 - `.env.example` — shows where the IDE password goes.
 - `config/settings.json` — simple VS Code settings including auto-save.
+- `extensions/` — extensions installed into the IDE image during the build.
 - `workspace-template/` — sample Python and SQL work.
 - `workspace/` — created for live work and deliberately ignored by Git.
 - `README.md` — this guide.
@@ -70,6 +73,9 @@ Then build/start the test:
 ```bash
 docker compose up -d --build
 ```
+
+The image build installs Python 3, pip and the bundled Pixel & Wood Python
+Editor. Pupils do not need to install the editor themselves.
 
 Check it:
 
